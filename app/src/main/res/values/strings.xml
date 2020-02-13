@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Foloosi</string>
+    <string name="txt_include_my_address">With Address</string>
+    <string name="txt_include_my_profile">With Profile</string>
+    <string name="txt_title">MI, Lenovo, One Plus</string>
+    <string name="txt_description">Brand New Android Mobiles are available for New Year Sale :). Order Now using Foloosi Payment</string>
+
+    <string name="txt_dummy_amt">200.00</string>
+    <string name="txt_clear">Clear Session</string>
+    <string name="txt_custom_color">With Custom Color</string>
+    <string name="txt_select_currency">Select Currency</string>
+
+    <string-array name="currency_array">
+        <item>AED</item>
+        <item>USD</item>
+        <item>INR</item>
+        <item>EUR</item>
+    </string-array>
+
+</resources>
