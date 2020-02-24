@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FView"
+    android:orientation="vertical"
+    tools:ignore="ContentDescription">
+
+    <LinearLayout
+        style="@style/VView"
+        android:padding="15dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mobile" />
+
+        <TextView
+            style="@style/WView"
+            android:layout_gravity="start"
+            android:layout_marginTop="15dp"
+            android:text="@string/txt_title"
+            android:textColor="@color/colorTxt"
+            android:textSize="17sp" />
+
+        <TextView
+            style="@style/WView"
+            android:layout_gravity="start"
+            android:layout_marginTop="6dp"
+            android:text="@string/txt_description"
+            android:textColor="@color/colorTxt"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edt_currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/txt_currency"
+            android:inputType="textCapCharacters"
+            android:padding="14dp"
+            android:textColor="@color/colorTxt"
+            android:textColorHint="@color/colorHint"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/edt_cost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/txt_price"
+            android:inputType="numberDecimal"
+            android:padding="14dp"
+            android:text="@string/txt_dummy_amt"
+            android:textColor="@color/colorTxt"
+            android:textColorHint="@color/colorHint"
+            tools:ignore="Autofill" />
+
+        <Button
+            android:id="@+id/btn_guest_pay"
+            style="@style/VView"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:background="#009688"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/txt_pay"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -5,75 +5,53 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.foloosi.core.FPayListener;
+import com.foloosi.core.FoloosiLog;
 import com.foloosi.core.FoloosiPay;
-import com.foloosi.models.CurrencyCode;
 import com.foloosi.models.Customer;
-import com.foloosi.models.OrderAddress;
 import com.foloosi.models.OrderData;
 import com.foloosi.models.TransactionData;
 import com.foloosi.util.FConstants;
-import com.foloosi.util.FoloosiLog;
-import com.foloosi.util.TToast;
 
 import java.util.Random;
 
 public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
-    private Button btnPaywithFoloosi;
+    private Button btnPayWithFoloosi;
 
-    private EditText edtAmount;
+    private EditText edtAmount, edtCurrencyCode;
 
-    private String amount;
+    private String amount, currencyCode;
 
     private OrderData orderData;
 
     private Customer customer;
 
-    private OrderAddress orderAddress;
-
-    private Spinner spinnerCurrency;
-
     private Bundle bundle;
 
-    private static final String MERCHANT_KEY = "YOUR_MERCHANT_KEY";
-
-    private CheckBox checkBoxAddress, checkBoxProfile, checkClear, checkCustomColor;
+    private static final String MERCHANT_KEY = "test_$2y$10$nBFlhIbZ0xA1A0.-MPvoP.v45N5oiAJeBPomyWw-dya-GEUtqZKiy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_start);
-
+        setContentView(R.layout.act_demo_pay);
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        btnPaywithFoloosi = findViewById(R.id.btn_guest_pay);
+        btnPayWithFoloosi = findViewById(R.id.btn_guest_pay);
         edtAmount = findViewById(R.id.edt_cost);
-        checkClear = findViewById(R.id.check_clear);
-        spinnerCurrency = findViewById(R.id.spinner);
-        checkCustomColor = findViewById(R.id.checkbox_include_custom_color);
-        checkBoxAddress = findViewById(R.id.checkbox_include_address);
-        checkBoxProfile = findViewById(R.id.checkbox_include_profile);
-        btnPaywithFoloosi.setOnClickListener(v -> onPaymentClick());
+        edtCurrencyCode = findViewById(R.id.edt_currency);
+        btnPayWithFoloosi.setOnClickListener(v -> onPaymentClick());
         bundle = new Bundle();
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.currency_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCurrency.setAdapter(adapter);
     }
 
     @Override
@@ -101,11 +79,16 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
     private void onPaymentClick() {
         try {
             amount = edtAmount.getText().toString();
+            currencyCode = edtCurrencyCode.getText().toString();
 
             if (amount.isEmpty()) {
-                TToast.showToast(this, "Amount is empty");
+                showToast("Amount is empty");
+                return;
+            } else if (currencyCode.isEmpty()) {
+                showToast("CurrencyCode is empty");
                 return;
             }
+
             FoloosiLog.setLogVisible(true);
             FoloosiPay.init(this, MERCHANT_KEY);
             orderData = new OrderData();
@@ -113,50 +96,15 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
             orderData.setOrderAmount(Double.parseDouble(amount));
             Random rand = new Random();
             int orderId = rand.nextInt(100000);
+            orderData.setCustomColor("#ab34fd");
             orderData.setOrderId(String.valueOf(orderId));
             orderData.setOrderDescription("Mobile Phone");
-
-            int spinnerSelectedItem = spinnerCurrency.getSelectedItemPosition();
-            CurrencyCode currencyCode;
-            switch (spinnerSelectedItem) {
-                case 1:
-                    currencyCode = CurrencyCode.USD;
-                    break;
-                case 2:
-                    currencyCode = CurrencyCode.INR;
-                    break;
-                case 3:
-                    currencyCode = CurrencyCode.EUR;
-                    break;
-                default:
-                    currencyCode = CurrencyCode.AED;
-            }
             orderData.setCurrencyCode(currencyCode);
-
-            if (checkBoxProfile.isChecked()) {
-                customer = new Customer();
-                customer.setName("name");
-                customer.setEmail("email@gmail.com");
-                customer.setMobile("123456789");
-                customer.setAddress("xxxxxxxxx");
-                customer.setCity("xxxxxxx");
-                orderData.setCustomer(customer);
-            }
-            if (checkBoxAddress.isChecked()) {
-                orderAddress = new OrderAddress();
-                orderAddress.setCity("xxxx");
-                orderAddress.setCountry("ARE");
-                orderAddress.setAddress("xxxxxxxxxxxxxxxxxxx");
-                orderAddress.setState("xxxx");
-                orderAddress.setPostalCode("123455");
-                orderData.setOrderAddress(orderAddress);
-                orderData.setShippingSameAsBilling(true);
-            }
-
-            if (checkCustomColor.isChecked())
-                orderData.setCustomColor("#666666");
-            if (checkClear.isChecked())
-                FoloosiPay.clearUserData();
+            customer = new Customer();
+            customer.setName("name");
+            customer.setEmail("email@gmail.com");
+            customer.setMobile("123456789");
+            orderData.setCustomer(customer);
 
             FoloosiPay.makePayment(orderData);
         } catch (Exception e) {
@@ -177,9 +125,8 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
                         transactionData = bundle.getParcelable(FConstants.TRANSACTION_DATA);
 
                     if (transactionData != null)
-                        FoloosiLog.v("Transaction Data:::" + transactionData.getTransactionID());
+                        com.foloosi.core.FoloosiLog.v("Transaction Data:::" + transactionData.getTransactionID());
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -189,13 +136,17 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
     @Override
     public void onTransactionSuccess(TransactionData data) {
-        TToast.showToast(this, "isSuccess::" + data.getTransactionID());
+        showToast("isSuccess::" + data.getTransactionID());
     }
 
     @Override
     public void onTransactionFailure(String error) {
         FoloosiLog.v("Error::" + error);
-        TToast.showToast(this, error);
+        showToast(error);
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
 }
