@@ -1,1 +1,3 @@
-# FoloosiAndroidSDK
+# Foloosi Android SDK Integration
+
+
