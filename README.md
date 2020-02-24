@@ -2,7 +2,7 @@
 
 ## Step - 1 - Add Dependency
 
-We distribute our SDK from the Maven Central Repository. To begin with this SDk open your build.gradle file of Module:app and
+We distribute our SDK from the Maven Central Repository. To begin with this SDK open your build.gradle file of Module:app and
 add the following dependency.
 
 ```
@@ -11,7 +11,7 @@ implementation 'com.foloosi:PaymentSDK:1.0.6'
 
 ## Step - 2 - Initialize SDK 
 
-To initialize the SDK add the below lines of code with the merchant key you retrieved from foloosi merchant panel. If you don't have a merchant key use this link to get new one.
+To initialize the SDK add the below line of code with the merchant key you retrieved from foloosi merchant panel. If you don't have a merchant key use this link to get new one.
 
 ```
 FoloosiPay.init(this, "Your Unique Merchant Key");
@@ -71,7 +71,7 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
 ```
 
-## Foloosi Log Visibility 
+## Foloosi Log 
 
 You can enable / disable the SDK logs by using the below line of code. By default it will be disabled. 
 
