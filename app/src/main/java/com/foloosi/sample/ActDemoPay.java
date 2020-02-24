@@ -36,7 +36,7 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
     private Bundle bundle;
 
-    private static final String MERCHANT_KEY = "test_$2y$10$nBFlhIbZ0xA1A0.-MPvoP.v45N5oiAJeBPomyWw-dya-GEUtqZKiy";
+    private static final String MERCHANT_KEY = "your merchant key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
