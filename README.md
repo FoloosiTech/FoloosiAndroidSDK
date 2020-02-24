@@ -11,7 +11,7 @@ implementation 'com.foloosi:PaymentSDK:1.0.6'
 
 ## Step - 2 - Initialize SDK 
 
-To initialize the SDK add the below line of code with the merchant key you retrieved from foloosi merchant panel. If you don't have a merchant key use this link to get new one.
+To initialize the SDK add the below line of code with the merchant key you retrieved from foloosi merchant panel. If you don't have a merchant key create new one.
 
 ```
 FoloosiPay.init(this, "Your Unique Merchant Key");
