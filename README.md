@@ -99,5 +99,7 @@ If you are using Proguard for your builds, modify the Proguard rule file:
 
 ```
 
+## Sample Payment Reference.
 
+Please check [this link](https://github.com/FoloosiTech/FoloosiAndroidSDK/blob/master/app/src/main/java/com/foloosi/sample/ActDemoPay.java) for sample payment with above steps.
 
