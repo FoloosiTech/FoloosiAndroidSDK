@@ -48,7 +48,6 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
                 FoloosiPay.init(this, "Your Merchant Key");
 
                 OrderData orderData = new OrderData();
-                orderData.setTitle("Testing payment title");
                 orderData.setOrderAmount(Double.parseDouble(amount));
                 Random rand = new Random();
                 int orderId = rand.nextInt(100000);
@@ -76,7 +75,6 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
     @Override
     public void onTransactionFailure(String error) {
-        FoloosiLog.v("Error::" + error);
         showToast(error);
     }
 

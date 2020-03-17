@@ -24,7 +24,6 @@ You can create the order data or payment input with our OrderData Model class. H
 ```
 
 OrderData orderData = new OrderData(); // Foloosi Order Data Model Class Instance
-orderData.setTitle("Testing payment title"); // Order Title
 orderData.setOrderAmount(Double.parseDouble(amount)); // in double format ##,###.##
 Random rand = new Random();
 int orderId = rand.nextInt(100000);
