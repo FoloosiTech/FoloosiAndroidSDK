@@ -12,7 +12,6 @@ import com.foloosi.core.FoloosiLog;
 import com.foloosi.core.FoloosiPay;
 import com.foloosi.models.Customer;
 import com.foloosi.models.OrderData;
-import com.foloosi.models.TransactionData;
 
 import java.util.Random;
 
@@ -69,8 +68,8 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
     }
 
     @Override
-    public void onTransactionSuccess(TransactionData data) {
-        showToast("isSuccess::" + data.getTransactionID());
+    public void onTransactionSuccess(String transactionId) {
+        showToast("isSuccess::" + transactionId);
     }
 
     @Override

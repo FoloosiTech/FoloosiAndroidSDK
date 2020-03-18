@@ -6,7 +6,7 @@ We distribute our SDK from the Maven Central Repository. To begin with this SDK 
 add the following dependency.
 
 ```
-implementation 'com.foloosi:PaymentSDK:1.0.6'
+implementation 'com.foloosi:FoloosiSDK:1.0.0'
 ```
 
 ## Step - 2 - Initialize SDK 
@@ -58,7 +58,7 @@ Implement our payment listener to receive the payment result for the payment we 
 public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
     @Override
-    public void onTransactionSuccess(TransactionData data) {
+    public void onTransactionSuccess(String transactionId) {
         // Success Callback
     }
 
