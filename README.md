@@ -6,7 +6,7 @@ We distribute our SDK from the Maven Central Repository. To begin with this SDK 
 add the following dependency.
 
 ```
-implementation 'com.foloosi:FoloosiSDK:1.0.0'
+implementation 'com.foloosi:FoloosiSDK:1.0.1'
 ```
 
 ## Step - 2 - Initialize SDK 
