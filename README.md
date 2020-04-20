@@ -69,7 +69,7 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
     @Override
     public void onTransactionCancelled() {
-        // Cancelled by User
+        // Transaction Cancelled by User
     }
 
 }
