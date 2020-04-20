@@ -77,6 +77,11 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
         showToast(error);
     }
 
+    @Override
+    public void onTransactionCancelled() {
+        // Cancelled by User
+    }
+
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }

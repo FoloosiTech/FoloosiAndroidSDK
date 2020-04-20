@@ -6,7 +6,7 @@ We distribute our SDK from the Maven Central Repository. To begin with this SDK 
 add the following dependency.
 
 ```
-implementation 'com.foloosi:FoloosiSDK:1.0.1'
+implementation 'com.foloosi:FoloosiSDK:1.0.2'
 ```
 
 ## Step - 2 - Initialize SDK 
@@ -66,6 +66,12 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
     public void onTransactionFailure(String error) {
         // Failure Callback.
     }
+
+    @Override
+    public void onTransactionCancelled() {
+        // Cancelled by User
+    }
+
 }
 
 ```
