@@ -45,7 +45,10 @@ Set and Implement our payment listener to receive the payment result for the pay
 
 ```
 
+//Setting payment listener (paste this line after init() method)
+FoloosiPay.setPaymentListener(this);
 
+//Implementing
 public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
     @Override
@@ -63,11 +66,6 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
         // Transaction Cancelled by User
     }
 
-    private void initiatePayment(){
-        //Setting payment listener
-      FoloosiPay.setPaymentListener(this);
-    }
-
 }
 
 ```
@@ -77,13 +75,8 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
 Use the below line of code to make the payment with the order data you created in Step - 3
 
 ```
- private void initiatePayment(){
-      //Setting payment listener
-      FoloosiPay.setPaymentListener(this);
 
-      //making payment
-      FoloosiPay.makePayment(orderData);
- }
+ FoloosiPay.makePayment(orderData);
 
 ```
 
