@@ -44,7 +44,7 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
                 showToast("CurrencyCode is empty");
             else {
                 FoloosiLog.setLogVisible(true);
-                FoloosiPay.init(this, "test_$2y$10$nBFlhIbZ0xA1A0.-MPvoP.v45N5oiAJeBPomyWw-dya-GEUtqZKiy");
+                FoloosiPay.init(this, "Your Unique Merchant Key");
 
                 OrderData orderData = new OrderData();
                 orderData.setOrderAmount(Double.parseDouble(amount));
