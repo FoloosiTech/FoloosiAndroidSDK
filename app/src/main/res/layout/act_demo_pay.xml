@@ -39,6 +39,7 @@
             android:hint="@string/txt_currency"
             android:inputType="textCapCharacters"
             android:padding="14dp"
+            android:textAllCaps="true"
             android:textColor="@color/colorTxt"
             android:textColorHint="@color/colorHint"
             tools:ignore="Autofill" />
