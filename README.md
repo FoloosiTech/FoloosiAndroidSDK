@@ -6,7 +6,7 @@ We distribute our SDK from the Maven Central Repository. To begin with this SDK 
 add the following dependency.
 
 ```
-implementation 'com.foloosi:FoloosiSDK:1.0.3'
+implementation 'com.foloosi:FoloosiSDK:1.0.4'
 ```
 
 ## Step - 2 - Initialize SDK 
@@ -39,21 +39,12 @@ orderData.setCustomer(customer);
 
 ```
 
-## Step - 4 - Make Transaction with Foloosi
+## Step - 4 - Implement Payment Listener
 
-Use the below line of code to make the payment with the order data you created in Step - 3
-
-```
-
-FoloosiPay.makePayment(orderData); 
+Set and Implement our payment listener to receive the payment result for the payment we going to make in Step - 5. Use the below code to obtain the payment result.
 
 ```
 
-## Step - 5 - Implement Payment Listener
-
-Implement our payment listener to receive the payment result for the payment we made in Step - 4. Use the below code to obtain the payment result.
-
-```
 
 public class ActDemoPay extends AppCompatActivity implements FPayListener {
 
@@ -72,7 +63,27 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
         // Transaction Cancelled by User
     }
 
+    private void initiatePayment(){
+        //Setting payment listener
+      FoloosiPay.setPaymentListener(this);
+    }
+
 }
+
+```
+
+## Step - 5 - Make Transaction with Foloosi
+
+Use the below line of code to make the payment with the order data you created in Step - 3
+
+```
+ private void initiatePayment(){
+      //Setting payment listener
+      FoloosiPay.setPaymentListener(this);
+
+      //making payment
+      FoloosiPay.makePayment(orderData);
+ }
 
 ```
 

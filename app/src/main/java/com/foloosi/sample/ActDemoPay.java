@@ -1,6 +1,7 @@
 package com.foloosi.sample;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,14 +38,13 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
         try {
             String amount = edtAmount.getText().toString();
             String currencyCode = edtCurrencyCode.getText().toString();
-
             if (amount.isEmpty())
                 showToast("Amount is empty");
             else if (currencyCode.isEmpty())
                 showToast("CurrencyCode is empty");
             else {
                 FoloosiLog.setLogVisible(true);
-                FoloosiPay.init(this, "Your Merchant key");
+                FoloosiPay.init(this, "test_$2y$10$nBFlhIbZ0xA1A0.-MPvoP.v45N5oiAJeBPomyWw-dya-GEUtqZKiy");
 
                 OrderData orderData = new OrderData();
                 orderData.setOrderAmount(Double.parseDouble(amount));
@@ -59,7 +59,7 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
                 customer.setEmail("email@gmail.com");
                 customer.setMobile("123456789");
                 orderData.setCustomer(customer);
-
+                FoloosiPay.setPaymentListener(this);
                 FoloosiPay.makePayment(orderData);
             }
         } catch (Exception e) {
@@ -80,6 +80,7 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
     @Override
     public void onTransactionCancelled() {
         // Cancelled by User
+        Log.v("Cancel::", "Cancelled");
     }
 
     private void showToast(String message) {
