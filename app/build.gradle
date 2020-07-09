@@ -26,5 +26,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.foloosi:FoloosiSDK:1.0.4'
+    implementation 'com.foloosi:FoloosiSDK:1.0.5'
 }
