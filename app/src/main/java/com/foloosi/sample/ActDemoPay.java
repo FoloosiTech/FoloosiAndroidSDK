@@ -44,7 +44,7 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
                 showToast("CurrencyCode is empty");
             else {
                 FoloosiLog.setLogVisible(true);
-                FoloosiPay.init(this, "YOUR_MERCHANT_KEY");
+                FoloosiPay.init(this, "test_$2y$10$nBFlhIbZ0xA1A0.-MPvoP.v45N5oiAJeBPomyWw-dya-GEUtqZKiy");
 
                 OrderData orderData = new OrderData();
                 orderData.setOrderAmount(Double.parseDouble(amount));
@@ -58,6 +58,11 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
                 customer.setName("name");
                 customer.setEmail("email@gmail.com");
                 customer.setMobile("123456789");
+
+                orderData.setCountry("IN");
+                orderData.setState("Tamilnadu");
+                orderData.setPostalCode("600032");
+
                 orderData.setCustomer(customer);
                 FoloosiPay.setPaymentListener(this);
                 FoloosiPay.makePayment(orderData);

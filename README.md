@@ -6,7 +6,7 @@ We distribute our SDK from the Maven Central Repository. To begin with this SDK 
 add the following dependency.
 
 ```
-implementation 'com.foloosi:FoloosiSDK:1.0.8'
+implementation 'com.foloosi:FoloosiSDK:1.0.9'
 ```
 
 ## Step - 2 - Initialize SDK 
@@ -35,6 +35,10 @@ Customer customer = new Customer();
 customer.setName("name");
 customer.setEmail("email@gmail.com");
 customer.setMobile("1234567890");
+
+orderData.setCountry("XX");
+orderData.setState("STATEHERE");
+orderData.setPostalCode("CODEHERE");
 orderData.setCustomer(customer);
 
 ```
