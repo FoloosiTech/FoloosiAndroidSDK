@@ -58,9 +58,11 @@ public class ActDemoPay extends AppCompatActivity implements FPayListener {
                 customer.setName("name");
                 customer.setEmail("email@gmail.com");
                 customer.setMobile("123456789");
+                customer.setCity("Chennai");
+                customer.setAddress("Address HERE");
 
-                orderData.setCountry("IN");
-                orderData.setState("Tamilnadu");
+                orderData.setCountry("IN"); // Should be 2 or 3 Digit Country Code.
+                orderData.setState("Tamil Nadu");
                 orderData.setPostalCode("600032");
 
                 orderData.setCustomer(customer);
